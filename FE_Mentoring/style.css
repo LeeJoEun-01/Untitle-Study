@@ -1,0 +1,77 @@
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logo img {
+  margin-top: 121px;
+  width: 130px;
+  height: 130px;
+}
+.title h2 {
+  margin-top: 9px;
+  font-family: 'Pretendard Variable';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 43px;
+  color: #494949;
+}
+.text h2 {
+  margin-top: 18px;
+  font-family: 'Pretendard Variable';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
+  color: #6F6F6F;
+}
+
+.loginBox input{
+  width: 598px;
+  height: 52px;
+  background: #F9F9F9;
+  box-sizing: border-box;
+  border: 1px solid #F5F5F5;
+  border-radius: 3px; 
+}
+.loginBox input::placeholder{
+  padding-left: 12px;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #BBBBBB;
+}
+.btn-gray input{
+  width: 598px;
+  height: 58px;
+  background: #A6A6A6;
+  border-radius: 3px;
+  border: none;
+}
+.btn-gray input[value]{
+  font-family: 'Pretendard Variable';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.signUp a, .loginPage a{
+  text-decoration: none;
+  font-family: 'Pretendard Variable';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #6F6F6F;
+}
