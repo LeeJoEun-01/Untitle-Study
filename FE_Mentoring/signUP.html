@@ -8,33 +8,59 @@
     <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
-    <header>
-        <div class="logo center">
-          <img src="UntitleLogo.png">
+  <header>
+    <div class="logo center">
+      <img src="UntitleLogo.png">
+    </div>
+    <div class="title center">
+      <h2>Un-title Todo</h2>
+    </div>
+    <div class="text center">
+      <h2>회원가입</h2>
+    </div>
+  </header>
+  <section>
+    <div class="center">
+      <form>
+        <div class="loginBox">
+          <p><input type="text" name="id" id="id" placeholder="아이디"></p>
+          <p><input type="password" name="pwd" id="pwd" placeholder="비밀번호"></p>
         </div>
-        <div class="title center">
-          <h2>Un-title Todo</h2>
+        <div class="btn-gray">
+          <p><input type="button" id="signUpBtn" value="회원가입"></p>
         </div>
-        <div class="text center">
-          <h2>회원가입</h2>
-        </div>
-      </header>
-      <section>
-        <div class="center">
-          <form>
-            <div class="loginBox">
-              <p><input type="text" name="id" placeholder="아이디"></p>
-              <p><input type="password" name="pwd" placeholder="비밀번호"></p>
-            </div>
-            <div class="btn-gray">
-              <p><input type="submit" value="회원가입"></p>
-            </div>
-          </form>
-          <div class="loginPage">
-            <a href="./index.html">로그인</a>
-          </div>
-        </div>
-      </section>
+      </form>
+      <div class="loginPage">
+        <a href="./index.html">로그인</a>
+      </div>
+    </div>
+  </section>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      document.getElementById("signUpBtn").addEventListener('click',signUpBtn);
+      function signUpBtn() {
+        var id = document.getElementById('id').value;
+        var idStr = "@.";
+        var pwd = document.getElementById('pwd').value;
+        if (id.includes('@')&&id.includes('.')){
+          if (pwd.length < 8){
+            alert('비밀번호는 최소 8자리 이상입니다.');
+          } else {
+            alert('회원가입이 완료되었습니다. 🙌🏻')
+            document.getElementById('id').value = '';
+            document.getElementById('pwd').value = '';
+          }
+        } else {
+          if (pwd.length < 8){
+            alert('아이디는 이메일 형식으로 작서해야 하며, 비밀번호는 최소 8자리 이상입니다.');
+          } else {
+            alert('아이디를 이메일 형식으로 작성해야 합니다.');
+          }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
 
