@@ -48,6 +48,17 @@
             alert('비밀번호는 최소 8자리 이상입니다.');
           } else {
             alert('회원가입이 완료되었습니다. 🙌🏻')
+            fetch("http://localhost:8080/users/create", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: id,
+              password: pwd,
+            }),
+          }).then((response) => response.json())
+            .then((data) => console.log(data));
             document.getElementById('id').value = '';
             document.getElementById('pwd').value = '';
           }

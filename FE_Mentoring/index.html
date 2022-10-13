@@ -41,13 +41,23 @@
       document.getElementById("loginBtn").addEventListener('click',loginComp);
       function loginComp() {
         var id = document.getElementById('id').value;
-        var idStr = "@.";
         var pwd = document.getElementById('pwd').value;
         if (id.includes('@')&&id.includes('.')){
           if (pwd.length < 8){
             alert('비밀번호는 최소 8자리 이상입니다.');
           } else {
-            alert('로그인이 완료되었습니다. 🙌🏻')
+            //alert('로그인이 완료되었습니다. 🙌🏻')
+            fetch("http://127.0.0.1:8080/users/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: id,
+              password: pwd,
+            }),
+          }).then((response) => response.json())
+            .then((data) => console.log(data));
             document.getElementById('id').value = '';
             document.getElementById('pwd').value = '';
           }
