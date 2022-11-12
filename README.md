@@ -62,3 +62,16 @@ localStorage.length;
 ```
 
 [참고링크](https://www.daleseo.com/js-web-storage/)
+
+### alert에서 '확인'버튼 클릭 시 이벤트 주기
+```javascript
+if (window.confirm('Really go to another page?'))
+{
+    // They clicked Yes
+}
+else
+{
+    // They clicked no
+}
+```
+[참고링크](https://stackoverflow.com/questions/9394131/go-to-url-after-ok-button-if-alert-is-pressed/9394143#9394143)
