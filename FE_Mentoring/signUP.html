@@ -47,7 +47,7 @@
           if (pwd.length < 8){
             alert('비밀번호는 최소 8자리 이상입니다.');
           } else {
-            alert('회원가입이 완료되었습니다. 🙌🏻')
+            //alert('회원가입이 완료되었습니다. 🙌🏻')
             fetch("http://localhost:8080/users/create", {
             method: "POST",
             headers: {
@@ -61,6 +61,9 @@
             .then((data) => console.log(data));
             document.getElementById('id').value = '';
             document.getElementById('pwd').value = '';
+            if (window.confirm('회원가입이 완료되었습니다. 🙌🏻 \n로그인 페이지로 이동하시겠습니까? 🔅')) {
+              window.location = '/index.html';
+            }
           }
         } else {
           if (pwd.length < 8){

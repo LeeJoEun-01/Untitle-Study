@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>로그인</title>
+  <title>Login</title>
   <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
@@ -62,7 +62,10 @@
               if(data.details) {
                 alert('로그인에 실패하셨습니다. 🥲 아이디랑 비밀번호를 다시 한 번 확인해주세요 🙏🏻')
               } else {
-                alert('로그인이 완료되었습니다. 🙌🏻')
+                //alert('로그인이 완료되었습니다. 🙌🏻')
+                if (window.confirm('로그인이 완료되었습니다. 🙌🏻 \nTodoList 페이지로 이동하시겠습니까? 🖍')) {
+                  window.location = '/todoList.html';
+                }
               }
             });
             document.getElementById('id').value = '';

@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column;  /*수직 정렬*/
 }
 
 .logo img {
@@ -36,9 +36,9 @@
   box-sizing: border-box;
   border: 1px solid #F5F5F5;
   border-radius: 3px; 
+  padding-left: 12px;
 }
 .loginBox input::placeholder{
-  padding-left: 12px;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 500;
@@ -76,3 +76,80 @@
   color: #6F6F6F;
 }
 
+.pageTitle {
+  display: flex;
+  flex-wrap: wrap;  /* 요소들의 총 길이가 부모요소보다 길때 다음 요소로 넘어가게 해준다. */
+  flex-direction: row;  /*수평 정렬*/
+  align-items: left;
+  justify-content: left;
+  margin-top: 36px;
+  margin-left: 48px;
+}
+.logo-mini img{
+  width: 72px;
+  height: 72px;
+}
+ .pageTitle .title {
+  font-family: 'Pretendard Variable';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 40px;
+  color: #494949;
+ }
+
+.content {
+  margin-top: 58px;
+  margin-left: 107px;
+  font-family: 'Pretendard';
+  font-style: normal;
+}
+.content .category{
+  box-sizing: border-box;
+  width: 137px;
+  height: 40px;
+  border: 1.5px solid #7B7B7B;
+  border-radius: 50px;
+}
+.content .category .title{
+  margin: 5px auto;
+  text-align: center;
+  font-weight: 400;
+  font-size: 18px;
+}
+.content .todo {
+  margin-top: 20px;
+  margin-left: 30px;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.todo .li {
+  padding-bottom: 8px;
+}
+.inputForm {
+  display: flex;
+  flex-direction: row;  /*수평 정렬*/
+  align-items: left;
+  justify-content: left;
+  margin-left: 67px;
+  margin-top: 200px;
+}
+.inputForm input{
+  box-sizing: border-box;
+  border: 1px solid #F5F5F5;
+  width: 622px;
+  height: 57px;
+  background: #F9F9F9;
+  border-radius: 5px;
+  margin-left: 15px;
+  padding-left: 12px;
+}
+.inputForm input::placeholder{
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #6C6C6C;
+}
