@@ -74,5 +74,6 @@ else
     // They clicked no
 }
 ```
-(else 문이 없어도 `취소` 버튼은 생성되며 클릭 시 아무 일도 일어나지 않는다.)
+(else 문이 없어도 `취소` 버튼은 생성되며 클릭 시 아무 일도 일어나지 않는다.)  
+  
 [참고링크](https://stackoverflow.com/questions/9394131/go-to-url-after-ok-button-if-alert-is-pressed/9394143#9394143)
