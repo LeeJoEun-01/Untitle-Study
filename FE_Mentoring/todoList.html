@@ -40,8 +40,32 @@
 		</div>
 		<div class="inputForm">
 			<p><input type="text" id="title" name="title" placeholder="제목"></p>
-      <p><input type="text" id="list" name="title" placeholder="내용"></p>
+      <p><input type="text" id="list" name="list" placeholder="내용" onkeypress="enterKey(event)"></p>
 		</div>
   </section>
+	<script type="text/javascript">
+		function enterKey(e) {
+			const code = e.code;
+			let title = document.getElementById("title").value;
+			let list = document.getElementById("list").value;
+			if(code == 'Enter') {
+				console.log("console 클릭");
+				localStorage.setItem(title, list);
+			}
+			fetch("http://127.0.0.1:8080/todos", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              title: title,
+              content: list,
+            }),
+          }).then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+            });
+		}
+	</script>
 </body>
 </html>
