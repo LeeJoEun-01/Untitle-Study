@@ -19,7 +19,7 @@
 		</div>
   </header>
   <section>
-    <div class="content">
+    <div class="content" id="study">
 			<div class="category">
 				<div class="title">전공 공부 🏫</div>
 			</div>
@@ -44,27 +44,89 @@
 		</div>
   </section>
 	<script type="text/javascript">
+		const token = localStorage.getItem('login_token') || '';
+		
+		//get 받아와서 data 넣기
+		fetch("http://127.0.0.1:8080/todos", {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization:token,
+				},
+			}).then((response) => response.json())
+				.then((data) => {
+					console.log("Get");
+					console.log(data);
+					// 변수 이름 수정
+					let titleGet = "";
+					let contentGet = "";
+					var dataArr = JSON.stringify(data);
+					console.log("1: "+ dataArr);
+					// const result = data.map((oneDB)=>{
+					// 	titleGet = oneDB.title;
+					// 	contentGet = oneDB.contentGet;
+					// 	console.log(titleGet + " : " + contentGet);
+					// 	const id = document.getElementById("study");
+					// 	id.createTextNode(`
+					// 	<div class="li">
+					// 		<input type="checkbox" name="check1" value="1"><label for="check1"> 컴시개 7주차 강의 듣기</label><br/>
+					// 	</div>
+					// 	`);
+    			// 	return 0;
+					// });	
+			});
+		
+		// POST (서버로 todo 전송)
 		function enterKey(e) {
 			const code = e.code;
 			let title = document.getElementById("title").value;
 			let list = document.getElementById("list").value;
 			if(code == 'Enter') {
-				console.log("console 클릭");
-				localStorage.setItem(title, list);
-			}
+				//console.log("console 클릭"+token);
+				fetch("http://127.0.0.1:8080/todos", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization:token,
+				},
+				body: JSON.stringify({
+					title: title,
+					content: list,
+				}),
+			}).then((response) => response.json())
+				.then((data) => {
+				console.log("POST");
+				console.log(data);
+				console.log(title+" : "+list)
+			});
+			//get 받아와서 data 넣기
 			fetch("http://127.0.0.1:8080/todos", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              title: title,
-              content: list,
-            }),
-          }).then((response) => response.json())
-            .then((data) => {
-              console.log(data);
-            });
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization:token,
+					},
+				}).then((response) => response.json())
+					.then((data) => {
+						console.log("Get");
+						console.log(data);
+						// 변수 이름 수정
+						let titleGet = "";
+						let contentGet = "";
+						// const result = data.map((oneDB)=>{
+						// 	titleGet = oneDB.title;
+						// 	contentGet = oneDB.contentGet;
+						// 	console.log(titleGet + " : " + contentGet);
+						// 	const id = document.getElementById("study");
+						// 	id.createTextNode(`
+						// 	<div class="li">
+						// 		<input type="checkbox" name="check1" value="1"><label for="check1"> 컴시개 7주차 강의 듣기</label><br/>
+						// 	</div>
+						// 	`);
+						// 	return 0;
+						// });	
+				});
+			}
 		}
 	</script>
 </body>
