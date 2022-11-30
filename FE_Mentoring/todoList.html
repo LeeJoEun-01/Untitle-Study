@@ -6,6 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Todo List</title>
   <link rel="stylesheet" type="text/css" href="./style.css">
+	<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+  />
 </head>
 <body>
   <header>
@@ -48,33 +52,31 @@
 		
 		//get 받아와서 data 넣기
 		fetch("http://127.0.0.1:8080/todos", {
-				method: "GET",
-				headers: {
-					"Content-Type": "application/json",
-					Authorization:token,
-				},
-			}).then((response) => response.json())
-				.then((data) => {
-					console.log("Get");
-					console.log(data);
-					// 변수 이름 수정
-					let titleGet = "";
-					let contentGet = "";
-					var dataArr = JSON.stringify(data);
-					console.log("1: "+ dataArr);
-					// const result = data.map((oneDB)=>{
-					// 	titleGet = oneDB.title;
-					// 	contentGet = oneDB.contentGet;
-					// 	console.log(titleGet + " : " + contentGet);
-					// 	const id = document.getElementById("study");
-					// 	id.createTextNode(`
-					// 	<div class="li">
-					// 		<input type="checkbox" name="check1" value="1"><label for="check1"> 컴시개 7주차 강의 듣기</label><br/>
-					// 	</div>
-					// 	`);
-    			// 	return 0;
-					// });	
-			});
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization:token,
+					},
+				}).then((response) => response.json())
+					.then((data) => {
+						console.log("Get");
+						let dataArr = data['data']
+						//console.log(dataArr[0]);
+						dataArr.map((item, index) => {
+							titleGet = item.title;
+							contentGet = item.content;
+							console.log(titleGet + " : " + contentGet);
+							// const id = document.getElementById("study");
+							// let newTag = `<div class="li">
+							// 		<input type="checkbox" name="check1" value="1"><label for="check1">${contentGet}</label><br/>
+							// 	</div>`
+							// id.createElement(newTag);
+							document.querySelector('id.study').innerHTML += `<div class="li"><input type="checkbox" name="check1" value="1">
+							<label for="check1">${contentGet}</label><br/>
+							</div>`
+							return 0;
+						});
+				});
 		
 		// POST (서버로 todo 전송)
 		function enterKey(e) {
@@ -100,6 +102,7 @@
 				console.log(title+" : "+list)
 			});
 			//get 받아와서 data 넣기
+
 			fetch("http://127.0.0.1:8080/todos", {
 					method: "GET",
 					headers: {
@@ -109,7 +112,8 @@
 				}).then((response) => response.json())
 					.then((data) => {
 						console.log("Get");
-						console.log(data);
+						let dataArr = data['data'];
+						console.log(dataArr[1]);
 						// 변수 이름 수정
 						let titleGet = "";
 						let contentGet = "";
@@ -125,9 +129,13 @@
 						// 	`);
 						// 	return 0;
 						// });	
-				});
-			}
-		}
+					});
+				};
+			};
+		
 	</script>
 </body>
 </html>
+
+<!-- 사용해보기 -->
+<!-- 리액트, 리액트쿼리, 리코일 -->
