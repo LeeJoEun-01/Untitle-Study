@@ -77,3 +77,28 @@ else
 (else 문이 없어도 `취소` 버튼은 생성되며 클릭 시 아무 일도 일어나지 않는다.)  
   
 [참고링크](https://stackoverflow.com/questions/9394131/go-to-url-after-ok-button-if-alert-is-pressed/9394143#9394143)
+
+### Fetch Api Get에서 Data 사용하는 방법
+- `data['data']`로 받아서 사용해줘야 한다 !!
+=> 넘어오는 데이터 'data'라는 오브젝트 안에 'data'라는 키 안에 정보배열이 들어있기 때문이다.
+```javascript
+fetch("http://127.0.0.1:8080/todos", {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization:token,
+  },
+}).then((response) => response.json())
+  .then((data) => {
+    console.log("Get");
+    let dataArr = data['data']
+    //console.log(dataArr[0]);
+    dataArr.map((item, index) => {
+      titleGet = item.title;
+      contentGet = item.content;
+      console.log(titleGet + " : " + contentGet);
+      
+      return 0;
+		});
+});
+```
