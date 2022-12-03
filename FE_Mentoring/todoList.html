@@ -23,11 +23,10 @@
 		</div>
   </header>
   <section>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <div class="content" id="study">
-			<div class="category">
+			<div id = "todo" class="todo">
 				<div class="title">전공 공부 🏫</div>
-			</div>
-			<div class="todo">
 				<div class="li">
 					<input type="checkbox" name="check1" value="1"><label for="check1"> 컴시개 7주차 강의 듣기</label><br/>
 				</div>
@@ -61,21 +60,16 @@
 					.then((data) => {
 						console.log("Get");
 						let dataArr = data['data']
-						//console.log(dataArr[0]);
-						dataArr.map((item, index) => {
-							titleGet = item.title;
-							contentGet = item.content;
-							console.log(titleGet + " : " + contentGet);
-							// const id = document.getElementById("study");
-							// let newTag = `<div class="li">
-							// 		<input type="checkbox" name="check1" value="1"><label for="check1">${contentGet}</label><br/>
-							// 	</div>`
-							// id.createElement(newTag);
-							document.querySelector('id.study').innerHTML += `<div class="li"><input type="checkbox" name="check1" value="1">
-							<label for="check1">${contentGet}</label><br/>
-							</div>`
-							return 0;
-						});
+						console.log(dataArr[0]);
+						var todoList = dataArr.map(function(oneData) {
+							console.log(oneData.content);
+							console.log(1 + " : " + oneData.content);
+							return `<div class="li">
+								<input type="checkbox" name="check1" value="1"><label for="check1">`+ oneData.content + `</label><br/>
+								</div>`;
+						});	
+						var todoView = document.getElementById('todo')
+						$('#todo').append(todoList);
 				});
 		
 		// POST (서버로 todo 전송)
@@ -117,18 +111,15 @@
 						// 변수 이름 수정
 						let titleGet = "";
 						let contentGet = "";
-						// const result = data.map((oneDB)=>{
-						// 	titleGet = oneDB.title;
-						// 	contentGet = oneDB.contentGet;
-						// 	console.log(titleGet + " : " + contentGet);
-						// 	const id = document.getElementById("study");
-						// 	id.createTextNode(`
-						// 	<div class="li">
-						// 		<input type="checkbox" name="check1" value="1"><label for="check1"> 컴시개 7주차 강의 듣기</label><br/>
-						// 	</div>
-						// 	`);
-						// 	return 0;
-						// });	
+						const todoList = data.map(function(oneDB) {
+							titleGet = oneDB.title;
+							contentGet = oneDB.content;
+							console.log(titleGet + " : " + contentGet);
+							return `<div class="li">
+								<input type="checkbox" name="check1" value="1"><label for="check1">`+ oneDB.content + `</label><br/>
+								</div>`;
+						});	
+						$('#id').append(todoList);
 					});
 				};
 			};

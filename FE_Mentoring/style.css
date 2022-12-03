@@ -104,18 +104,19 @@
   font-family: 'Pretendard';
   font-style: normal;
 }
-.content .category{
+.content .todo{
   box-sizing: border-box;
   width: 137px;
   height: 40px;
   border: 1.5px solid #7B7B7B;
   border-radius: 50px;
 }
-.content .category .title{
+.content .todo .title{
   margin: 5px auto;
   text-align: center;
   font-weight: 400;
   font-size: 18px;
+  padding-bottom: 15px;
 }
 .content .todo {
   margin-top: 20px;
@@ -125,7 +126,9 @@
 }
 
 .todo .li {
+  width: 500px;
   padding-bottom: 8px;
+  padding-left: 3px;
 }
 .inputForm {
   display: flex;
